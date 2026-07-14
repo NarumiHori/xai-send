@@ -2,55 +2,89 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0d1117">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>今日の投稿ボード</title>
 <style>
   :root { color-scheme: dark; }
-  * { box-sizing: border-box; }
-  body { margin: 0; padding: 16px 14px 48px; background: #0d1117; color: #e6edf3;
-         font-family: -apple-system, "Hiragino Sans", sans-serif; max-width: 640px; margin-inline: auto; }
-  h1 { font-size: 20px; margin: 8px 0 2px; }
-  .sub-head { color: #8b949e; font-size: 13px; margin: 0 0 16px; }
-  .card { background: #161b22; border: 1px solid #30363d; border-radius: 14px; padding: 16px; margin-bottom: 16px; }
-  .card.pending { border-style: dashed; }
-  .cardhead { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-  .badge { font-size: 14px; font-weight: 700; }
-  .chars { color: #8b949e; font-size: 12px; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { margin: 0 auto; padding: 20px 16px 56px; background: #0d1117; color: #e6edf3;
+         font-family: -apple-system, "Hiragino Sans", system-ui, sans-serif; max-width: 520px;
+         -webkit-text-size-adjust: 100%; }
+  header { text-align: center; margin-bottom: 20px; }
+  h1 { font-size: 20px; font-weight: 700; margin: 4px 0 6px; letter-spacing: .02em; }
+  .sub-head { color: #8b949e; font-size: 13px; margin: 0 0 12px; }
+  .stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .pill { background: #161b22; border: 1px solid #30363d; color: #8b949e; border-radius: 999px;
+          font-size: 11px; padding: 4px 10px; }
+  .cards { display: flex; flex-direction: column; gap: 16px; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 16px; padding: 18px 16px; }
+  .card.pending { border-style: dashed; background: transparent; }
+  .cardhead { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .badge { font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; border: 1px solid transparent; }
+  .m-new .badge { color: #e3b341; background: rgba(187,128,9,.15); border-color: rgba(187,128,9,.4); }
+  .m-repost2 .badge { color: #f0883e; background: rgba(219,109,40,.15); border-color: rgba(219,109,40,.4); }
+  .m-repost .badge { color: #bc8cff; background: rgba(137,87,229,.15); border-color: rgba(137,87,229,.4); }
+  .chars { color: #8b949e; font-size: 12px; font-variant-numeric: tabular-nums; }
   .body { white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: 15px;
-           line-height: 1.75; background: #0d1117; border: 1px solid #21262d; border-radius: 10px;
-           padding: 12px; margin: 0 0 14px; }
-  .btn { display: block; width: 100%; text-align: center; padding: 14px; border-radius: 10px;
-          font-size: 15px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; }
-  .btn.primary { background: #1d9bf0; color: #fff; margin-bottom: 10px; }
+           line-height: 1.8; background: #0d1117; border: 1px solid #21262d; border-radius: 12px;
+           padding: 14px; margin: 0 0 14px; }
+  .btn { display: block; width: 100%; text-align: center; padding: 15px; border-radius: 12px;
+          font-size: 16px; font-weight: 700; text-decoration: none; border: none; cursor: pointer;
+          transition: filter .15s, transform .05s; }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: #1d9bf0; color: #fff; margin-bottom: 10px; box-shadow: 0 4px 14px rgba(29,155,240,.25); }
+  .btn.primary:hover { filter: brightness(1.08); }
   .btnrow { display: flex; gap: 8px; }
   .btnrow .btn.sub { flex: 1; }
-  .btn.sub { background: #21262d; color: #e6edf3; border: 1px solid #30363d; font-weight: 500; font-size: 13px; padding: 11px 4px; }
-  .posted { text-align: center; color: #3fb950; font-weight: 700; padding: 10px; }
-  .hint { color: #8b949e; font-size: 12px; line-height: 1.6; margin: 10px 0 0; }
-  .warn { color: #d29922; font-size: 13px; }
-  .muted { color: #8b949e; font-size: 14px; }
-  details.thought, details.fb { background: #0d1117; border: 1px solid #21262d; border-radius: 10px;
-           padding: 10px 12px; margin: 0 0 14px; }
-  details summary { cursor: pointer; font-size: 13px; color: #8b949e; font-weight: 600; }
-  .tbody { white-space: pre-wrap; font-size: 13px; line-height: 1.7; color: #c9d1d9; margin-top: 8px; }
+  .btn.sub { background: #21262d; color: #e6edf3; border: 1px solid #30363d; font-weight: 600; font-size: 13px; padding: 12px 4px; }
+  .btn.sub:hover { filter: brightness(1.2); }
+  .posted { text-align: center; color: #3fb950; font-weight: 700; padding: 12px;
+             background: rgba(46,160,67,.12); border: 1px solid rgba(46,160,67,.4); border-radius: 12px; }
+  .hint { color: #6e7681; font-size: 11.5px; line-height: 1.6; margin: 10px 2px 0; }
+  .warn { color: #d29922; font-size: 13px; margin: 0 0 10px; }
+  .muted { color: #8b949e; font-size: 14px; line-height: 1.7; margin: 0; }
+  details.thought, details.fb { background: #0d1117; border: 1px solid #21262d; border-radius: 12px;
+           padding: 12px 14px; margin: 0 0 14px; }
+  details.thought[open], details.fb[open] { border-color: #30363d; }
+  details summary { cursor: pointer; font-size: 13px; color: #8b949e; font-weight: 600;
+           -webkit-user-select: none; user-select: none; }
+  .tbody { white-space: pre-wrap; font-size: 13.5px; line-height: 1.8; color: #c9d1d9; margin-top: 10px; }
   details.fb { margin: 14px 0 0; }
   details.fb textarea { width: 100%; margin: 10px 0 8px; background: #161b22; color: #e6edf3;
-           border: 1px solid #30363d; border-radius: 8px; padding: 10px; font-size: 15px; font-family: inherit; }
-  h2 { font-size: 14px; color: #8b949e; margin: 28px 0 8px; }
+           border: 1px solid #30363d; border-radius: 10px; padding: 12px; font-size: 16px;
+           font-family: inherit; resize: vertical; min-height: 72px; }
+  details.fb textarea:focus { outline: none; border-color: #388bfd; }
+  h2 { font-size: 13px; color: #8b949e; font-weight: 600; margin: 32px 0 8px; letter-spacing: .04em; }
   .hist { list-style: none; padding: 0; margin: 0; }
-  .hist li { padding: 8px 2px; border-bottom: 1px solid #21262d; font-size: 13px; line-height: 1.5; }
-  .hdate { color: #8b949e; }
-  .hmode { background: #21262d; border-radius: 6px; padding: 1px 6px; font-size: 11px; }
+  .hist li { padding: 9px 2px; border-bottom: 1px solid #21262d; font-size: 13px; line-height: 1.5; }
+  .hdate { color: #8b949e; font-variant-numeric: tabular-nums; }
+  .hmode { background: #21262d; border: 1px solid #30363d; border-radius: 6px; padding: 1px 7px; font-size: 11px; color: #8b949e; }
   .hstat { color: #8b949e; font-size: 11px; }
-  footer { color: #484f58; font-size: 11px; margin-top: 32px; line-height: 1.7; }
+  footer { color: #484f58; font-size: 11px; margin-top: 36px; line-height: 1.7; text-align: center; }
+  @media (min-width: 880px) {
+    body { max-width: 1160px; padding: 36px 36px 72px; }
+    header { margin-bottom: 28px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+              gap: 20px; align-items: start; justify-content: center; }
+    .card { padding: 22px 22px 20px; }
+    .histwrap, footer { max-width: 760px; margin-inline: auto; }
+    .histwrap { margin-top: 8px; }
+  }
 </style>
 </head>
 <body>
-<h1>🐦 今日の投稿ボード <span style="font-weight:400">7/14（火）</span></h1>
-<p class="sub-head">最終更新 07/14 16:12 ・ 引っ張って更新 ・ 再投稿ストック103件（1日2本ローテ）</p>
+<header>
+<h1>🐦 今日の投稿ボード</h1>
+<p class="sub-head">7/14（火） ・ 最終更新 07/14 16:39 ・ 引っ張って更新</p>
+<div class="stats"><span class="pill">再投稿ストック 103件</span><span class="pill">1日 2本ローテ</span></div>
+</header>
+<main class="cards">
 
-    <section class="card">
+    <section class="card m-new">
       <div class="cardhead"><span class="badge">☀️ 朝の新規投稿</span><span class="chars">268字</span></div>
       
       <pre class="body" id="body-2026-07-14-new">YouTubeが伸びてない会社、
@@ -77,7 +111,11 @@ YouTubeって数字が出るまでのラグが一番長いメディアで
 
 まず1個をぶち抜く
 話はそれから</pre>
-      
+      <details class="thought" open><summary>💭 なぜ伸びると思うか（AIの仮説）</summary><div class="tbody">なるみさんがLoomで話していた「YouTubeが伸びない会社は、他のSNSも広告も全部同時にやっている」という話が、まだ単独の投稿になっていなかったので今日はこれを選びました。
+「全部やるのはリスク分散で賢い」と思われがちな行動をひっくり返す切り口なので、「え、逆なの？」という気づきが拡散の燃料になると踏んでいます。
+一番刺したい相手は、YouTubeに手を出したけど伸びていない会社の経営者・担当者。「うちはインスタの方が向いてるかも」という会議のひと言まで具体化したのは、「これ、うちの会議だ」と自分ごと化させるためです。
+狙っている反応は「わかる、うちの会社もこれ」「まず1個に絞るの大事」という共感のリプや引用。マーケに強い人には「認知を取る箱と信頼を深める箱」のくだりが深読みポイントとして刺さる想定です。
+（※この考察は朝の生成時に書き漏れていたため、同日の設計メモから復元したものです）</div></details>
       
       <a class="btn primary" href="https://x.com/intent/post?text=YouTube%E3%81%8C%E4%BC%B8%E3%81%B3%E3%81%A6%E3%81%AA%E3%81%84%E4%BC%9A%E7%A4%BE%E3%80%81%0A%E5%85%B1%E9%80%9A%E7%82%B9%E3%81%8C%E3%81%82%E3%81%A3%E3%81%A6%0A%0A%E3%81%A0%E3%81%84%E3%81%9F%E3%81%84%E4%BB%96%E3%81%AESNS%E3%82%82%E5%BA%83%E5%91%8A%E3%82%82%0A%E5%85%A8%E9%83%A8%E5%90%8C%E6%99%82%E3%81%AB%E3%82%84%E3%81%A3%E3%81%A6%E3%82%8B%0A%0A%E3%83%AA%E3%82%B9%E3%82%AF%E5%88%86%E6%95%A3%E3%81%A3%E3%81%BD%E3%81%8F%E3%81%A6%E4%B8%80%E8%A6%8B%E8%B3%A2%E3%81%9D%E3%81%86%E3%81%AA%E3%82%93%E3%81%A0%E3%81%91%E3%81%A9%E3%80%81%0AYouTube%E3%81%A3%E3%81%A6%E6%95%B0%E5%AD%97%E3%81%8C%E5%87%BA%E3%82%8B%E3%81%BE%E3%81%A7%E3%81%AE%E3%83%A9%E3%82%B0%E3%81%8C%E4%B8%80%E7%95%AA%E9%95%B7%E3%81%84%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%A7%0A%0A%E7%B5%90%E6%9E%9C%E3%81%8C%E5%87%BA%E3%82%8B%E5%89%8D%E3%81%AB%0A%E3%80%8C%E3%81%86%E3%81%A1%E3%81%AF%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%81%AE%E6%96%B9%E3%81%8C%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%8B%E3%82%82%E3%80%8D%0A%E3%81%A3%E3%81%A6%E6%92%A4%E9%80%80%E3%81%97%E3%81%A1%E3%82%83%E3%81%86%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%8C%E6%9C%AC%E5%BD%93%E3%81%AB%E5%A4%9A%E3%81%84%0A%0A%E3%81%82%E3%81%A8%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%AB%E3%81%AF%0A%E3%80%8C%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8B%E7%AE%B1%E3%80%8D%E3%81%A8%E3%80%8C%E4%BF%A1%E9%A0%BC%E3%82%92%E6%B7%B1%E3%82%81%E3%82%8B%E7%AE%B1%E3%80%8D%E3%81%8C%E3%81%82%E3%81%A3%E3%81%A6%0A%0A%E4%BC%B8%E3%81%B3%E3%81%A6%E3%82%8B%E4%BC%9A%E7%A4%BE%E3%81%AF%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8B%E7%AE%B1%E3%82%921%E5%80%8B%E3%81%AB%E6%B1%BA%E3%82%81%E3%81%A6%E3%80%81%0A%E6%AE%8B%E3%82%8A%E3%81%AF%E5%8F%97%E3%81%91%E7%9A%BF%E3%81%A8%E3%81%97%E3%81%A6%E7%BD%AE%E3%81%84%E3%81%A6%E3%82%8B%E3%81%A0%E3%81%91%0A%0A%E5%85%A8%E9%83%A8%E3%81%AE%E7%AE%B1%E3%81%A7%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8A%E3%81%AB%E3%81%84%E3%81%8F%E3%81%A8%E3%80%81%0A%E3%81%A9%E3%81%AE%E7%AE%B1%E3%81%AB%E3%82%82%E4%BA%BA%E3%81%8C%E8%B2%AF%E3%81%BE%E3%82%89%E3%81%AA%E3%81%84%0A%0A%E3%81%BE%E3%81%9A1%E5%80%8B%E3%82%92%E3%81%B6%E3%81%A1%E6%8A%9C%E3%81%8F%0A%E8%A9%B1%E3%81%AF%E3%81%9D%E3%82%8C%E3%81%8B%E3%82%89" target="_blank" rel="noopener"
          onclick="autoMark('2026-07-14-new')">📤 投稿する（開くと同時に✅記録）</a>
@@ -93,15 +131,18 @@ YouTubeって数字が出るまでのラグが一番長いメディアで
         <button class="btn sub" id="fbbtn-2026-07-14-new" onclick="sendFb('2026-07-14-new', this)">📨 送信</button>
       </details>
     </section>
-    <section class="card pending">
+    <section class="card pending m-repost2">
       <div class="cardhead"><span class="badge">🍜 昼の再投稿</span></div>
       <p class="muted">昼 12:00 に自動生成されます。生成されたらこのページを引っ張って更新してください。</p>
     </section>
-    <section class="card pending">
+    <section class="card pending m-repost">
       <div class="cardhead"><span class="badge">🌙 夜の再投稿</span></div>
       <p class="muted">夜 19:00 に自動生成されます。生成されたらこのページを引っ張って更新してください。</p>
     </section>
+</main>
+<section class="histwrap">
 
+</section>
 <footer>投稿の確定はXアプリ側で行います。<br>このページは検索に載らない秘密URLです。ホーム画面に追加しておくと1タップで開けます。</footer>
 <script>
 var TOPIC_URL = 'https://ntfy.sh/naru-xai-ingest-1f1cc874c1';
