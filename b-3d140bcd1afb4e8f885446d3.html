@@ -23,12 +23,20 @@
   .btn { display: block; width: 100%; text-align: center; padding: 14px; border-radius: 10px;
           font-size: 15px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; }
   .btn.primary { background: #1d9bf0; color: #fff; margin-bottom: 10px; }
-  .btnrow { display: flex; gap: 10px; }
-  .btn.sub { background: #21262d; color: #e6edf3; border: 1px solid #30363d; font-weight: 500; font-size: 13px; padding: 11px 6px; }
+  .btnrow { display: flex; gap: 8px; }
+  .btnrow .btn.sub { flex: 1; }
+  .btn.sub { background: #21262d; color: #e6edf3; border: 1px solid #30363d; font-weight: 500; font-size: 13px; padding: 11px 4px; }
   .posted { text-align: center; color: #3fb950; font-weight: 700; padding: 10px; }
   .hint { color: #8b949e; font-size: 12px; line-height: 1.6; margin: 10px 0 0; }
   .warn { color: #d29922; font-size: 13px; }
   .muted { color: #8b949e; font-size: 14px; }
+  details.thought, details.fb { background: #0d1117; border: 1px solid #21262d; border-radius: 10px;
+           padding: 10px 12px; margin: 0 0 14px; }
+  details summary { cursor: pointer; font-size: 13px; color: #8b949e; font-weight: 600; }
+  .tbody { white-space: pre-wrap; font-size: 13px; line-height: 1.7; color: #c9d1d9; margin-top: 8px; }
+  details.fb { margin: 14px 0 0; }
+  details.fb textarea { width: 100%; margin: 10px 0 8px; background: #161b22; color: #e6edf3;
+           border: 1px solid #30363d; border-radius: 8px; padding: 10px; font-size: 15px; font-family: inherit; }
   h2 { font-size: 14px; color: #8b949e; margin: 28px 0 8px; }
   .hist { list-style: none; padding: 0; margin: 0; }
   .hist li { padding: 8px 2px; border-bottom: 1px solid #21262d; font-size: 13px; line-height: 1.5; }
@@ -40,7 +48,7 @@
 </head>
 <body>
 <h1>🐦 今日の投稿ボード <span style="font-weight:400">7/14（火）</span></h1>
-<p class="sub-head">最終更新 07/14 09:49 ・ 引っ張って更新</p>
+<p class="sub-head">最終更新 07/14 16:12 ・ 引っ張って更新 ・ 再投稿ストック103件（1日2本ローテ）</p>
 
     <section class="card">
       <div class="cardhead"><span class="badge">☀️ 朝の新規投稿</span><span class="chars">268字</span></div>
@@ -70,36 +78,68 @@ YouTubeって数字が出るまでのラグが一番長いメディアで
 まず1個をぶち抜く
 話はそれから</pre>
       
-      <a class="btn primary" href="https://x.com/intent/post?text=YouTube%E3%81%8C%E4%BC%B8%E3%81%B3%E3%81%A6%E3%81%AA%E3%81%84%E4%BC%9A%E7%A4%BE%E3%80%81%0A%E5%85%B1%E9%80%9A%E7%82%B9%E3%81%8C%E3%81%82%E3%81%A3%E3%81%A6%0A%0A%E3%81%A0%E3%81%84%E3%81%9F%E3%81%84%E4%BB%96%E3%81%AESNS%E3%82%82%E5%BA%83%E5%91%8A%E3%82%82%0A%E5%85%A8%E9%83%A8%E5%90%8C%E6%99%82%E3%81%AB%E3%82%84%E3%81%A3%E3%81%A6%E3%82%8B%0A%0A%E3%83%AA%E3%82%B9%E3%82%AF%E5%88%86%E6%95%A3%E3%81%A3%E3%81%BD%E3%81%8F%E3%81%A6%E4%B8%80%E8%A6%8B%E8%B3%A2%E3%81%9D%E3%81%86%E3%81%AA%E3%82%93%E3%81%A0%E3%81%91%E3%81%A9%E3%80%81%0AYouTube%E3%81%A3%E3%81%A6%E6%95%B0%E5%AD%97%E3%81%8C%E5%87%BA%E3%82%8B%E3%81%BE%E3%81%A7%E3%81%AE%E3%83%A9%E3%82%B0%E3%81%8C%E4%B8%80%E7%95%AA%E9%95%B7%E3%81%84%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%A7%0A%0A%E7%B5%90%E6%9E%9C%E3%81%8C%E5%87%BA%E3%82%8B%E5%89%8D%E3%81%AB%0A%E3%80%8C%E3%81%86%E3%81%A1%E3%81%AF%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%81%AE%E6%96%B9%E3%81%8C%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%8B%E3%82%82%E3%80%8D%0A%E3%81%A3%E3%81%A6%E6%92%A4%E9%80%80%E3%81%97%E3%81%A1%E3%82%83%E3%81%86%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%8C%E6%9C%AC%E5%BD%93%E3%81%AB%E5%A4%9A%E3%81%84%0A%0A%E3%81%82%E3%81%A8%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%AB%E3%81%AF%0A%E3%80%8C%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8B%E7%AE%B1%E3%80%8D%E3%81%A8%E3%80%8C%E4%BF%A1%E9%A0%BC%E3%82%92%E6%B7%B1%E3%82%81%E3%82%8B%E7%AE%B1%E3%80%8D%E3%81%8C%E3%81%82%E3%81%A3%E3%81%A6%0A%0A%E4%BC%B8%E3%81%B3%E3%81%A6%E3%82%8B%E4%BC%9A%E7%A4%BE%E3%81%AF%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8B%E7%AE%B1%E3%82%921%E5%80%8B%E3%81%AB%E6%B1%BA%E3%82%81%E3%81%A6%E3%80%81%0A%E6%AE%8B%E3%82%8A%E3%81%AF%E5%8F%97%E3%81%91%E7%9A%BF%E3%81%A8%E3%81%97%E3%81%A6%E7%BD%AE%E3%81%84%E3%81%A6%E3%82%8B%E3%81%A0%E3%81%91%0A%0A%E5%85%A8%E9%83%A8%E3%81%AE%E7%AE%B1%E3%81%A7%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8A%E3%81%AB%E3%81%84%E3%81%8F%E3%81%A8%E3%80%81%0A%E3%81%A9%E3%81%AE%E7%AE%B1%E3%81%AB%E3%82%82%E4%BA%BA%E3%81%8C%E8%B2%AF%E3%81%BE%E3%82%89%E3%81%AA%E3%81%84%0A%0A%E3%81%BE%E3%81%9A1%E5%80%8B%E3%82%92%E3%81%B6%E3%81%A1%E6%8A%9C%E3%81%8F%0A%E8%A9%B1%E3%81%AF%E3%81%9D%E3%82%8C%E3%81%8B%E3%82%89">📤 この内容で投稿画面を開く</a>
+      
+      <a class="btn primary" href="https://x.com/intent/post?text=YouTube%E3%81%8C%E4%BC%B8%E3%81%B3%E3%81%A6%E3%81%AA%E3%81%84%E4%BC%9A%E7%A4%BE%E3%80%81%0A%E5%85%B1%E9%80%9A%E7%82%B9%E3%81%8C%E3%81%82%E3%81%A3%E3%81%A6%0A%0A%E3%81%A0%E3%81%84%E3%81%9F%E3%81%84%E4%BB%96%E3%81%AESNS%E3%82%82%E5%BA%83%E5%91%8A%E3%82%82%0A%E5%85%A8%E9%83%A8%E5%90%8C%E6%99%82%E3%81%AB%E3%82%84%E3%81%A3%E3%81%A6%E3%82%8B%0A%0A%E3%83%AA%E3%82%B9%E3%82%AF%E5%88%86%E6%95%A3%E3%81%A3%E3%81%BD%E3%81%8F%E3%81%A6%E4%B8%80%E8%A6%8B%E8%B3%A2%E3%81%9D%E3%81%86%E3%81%AA%E3%82%93%E3%81%A0%E3%81%91%E3%81%A9%E3%80%81%0AYouTube%E3%81%A3%E3%81%A6%E6%95%B0%E5%AD%97%E3%81%8C%E5%87%BA%E3%82%8B%E3%81%BE%E3%81%A7%E3%81%AE%E3%83%A9%E3%82%B0%E3%81%8C%E4%B8%80%E7%95%AA%E9%95%B7%E3%81%84%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%A7%0A%0A%E7%B5%90%E6%9E%9C%E3%81%8C%E5%87%BA%E3%82%8B%E5%89%8D%E3%81%AB%0A%E3%80%8C%E3%81%86%E3%81%A1%E3%81%AF%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%81%AE%E6%96%B9%E3%81%8C%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%8B%E3%82%82%E3%80%8D%0A%E3%81%A3%E3%81%A6%E6%92%A4%E9%80%80%E3%81%97%E3%81%A1%E3%82%83%E3%81%86%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%8C%E6%9C%AC%E5%BD%93%E3%81%AB%E5%A4%9A%E3%81%84%0A%0A%E3%81%82%E3%81%A8%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%AB%E3%81%AF%0A%E3%80%8C%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8B%E7%AE%B1%E3%80%8D%E3%81%A8%E3%80%8C%E4%BF%A1%E9%A0%BC%E3%82%92%E6%B7%B1%E3%82%81%E3%82%8B%E7%AE%B1%E3%80%8D%E3%81%8C%E3%81%82%E3%81%A3%E3%81%A6%0A%0A%E4%BC%B8%E3%81%B3%E3%81%A6%E3%82%8B%E4%BC%9A%E7%A4%BE%E3%81%AF%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8B%E7%AE%B1%E3%82%921%E5%80%8B%E3%81%AB%E6%B1%BA%E3%82%81%E3%81%A6%E3%80%81%0A%E6%AE%8B%E3%82%8A%E3%81%AF%E5%8F%97%E3%81%91%E7%9A%BF%E3%81%A8%E3%81%97%E3%81%A6%E7%BD%AE%E3%81%84%E3%81%A6%E3%82%8B%E3%81%A0%E3%81%91%0A%0A%E5%85%A8%E9%83%A8%E3%81%AE%E7%AE%B1%E3%81%A7%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8A%E3%81%AB%E3%81%84%E3%81%8F%E3%81%A8%E3%80%81%0A%E3%81%A9%E3%81%AE%E7%AE%B1%E3%81%AB%E3%82%82%E4%BA%BA%E3%81%8C%E8%B2%AF%E3%81%BE%E3%82%89%E3%81%AA%E3%81%84%0A%0A%E3%81%BE%E3%81%9A1%E5%80%8B%E3%82%92%E3%81%B6%E3%81%A1%E6%8A%9C%E3%81%8F%0A%E8%A9%B1%E3%81%AF%E3%81%9D%E3%82%8C%E3%81%8B%E3%82%89" target="_blank" rel="noopener"
+         onclick="autoMark('2026-07-14-new')">📤 投稿する（開くと同時に✅記録）</a>
       <div class="btnrow">
-        <button class="btn sub" onclick="copyBody(this, '2026-07-14-new')">📋 本文をコピー</button>
-        <button class="btn sub" id="done-2026-07-14-new" onclick="markPosted('2026-07-14-new', this)">✅ 投稿済みにする</button>
+        <button class="btn sub" onclick="copyBody(this, '2026-07-14-new')">📋 コピー</button>
+        <a class="btn sub" href="https://x.com/intent/post?text=YouTube%E3%81%8C%E4%BC%B8%E3%81%B3%E3%81%A6%E3%81%AA%E3%81%84%E4%BC%9A%E7%A4%BE%E3%80%81%0A%E5%85%B1%E9%80%9A%E7%82%B9%E3%81%8C%E3%81%82%E3%81%A3%E3%81%A6%0A%0A%E3%81%A0%E3%81%84%E3%81%9F%E3%81%84%E4%BB%96%E3%81%AESNS%E3%82%82%E5%BA%83%E5%91%8A%E3%82%82%0A%E5%85%A8%E9%83%A8%E5%90%8C%E6%99%82%E3%81%AB%E3%82%84%E3%81%A3%E3%81%A6%E3%82%8B%0A%0A%E3%83%AA%E3%82%B9%E3%82%AF%E5%88%86%E6%95%A3%E3%81%A3%E3%81%BD%E3%81%8F%E3%81%A6%E4%B8%80%E8%A6%8B%E8%B3%A2%E3%81%9D%E3%81%86%E3%81%AA%E3%82%93%E3%81%A0%E3%81%91%E3%81%A9%E3%80%81%0AYouTube%E3%81%A3%E3%81%A6%E6%95%B0%E5%AD%97%E3%81%8C%E5%87%BA%E3%82%8B%E3%81%BE%E3%81%A7%E3%81%AE%E3%83%A9%E3%82%B0%E3%81%8C%E4%B8%80%E7%95%AA%E9%95%B7%E3%81%84%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%A7%0A%0A%E7%B5%90%E6%9E%9C%E3%81%8C%E5%87%BA%E3%82%8B%E5%89%8D%E3%81%AB%0A%E3%80%8C%E3%81%86%E3%81%A1%E3%81%AF%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%81%AE%E6%96%B9%E3%81%8C%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%8B%E3%82%82%E3%80%8D%0A%E3%81%A3%E3%81%A6%E6%92%A4%E9%80%80%E3%81%97%E3%81%A1%E3%82%83%E3%81%86%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%8C%E6%9C%AC%E5%BD%93%E3%81%AB%E5%A4%9A%E3%81%84%0A%0A%E3%81%82%E3%81%A8%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%AB%E3%81%AF%0A%E3%80%8C%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8B%E7%AE%B1%E3%80%8D%E3%81%A8%E3%80%8C%E4%BF%A1%E9%A0%BC%E3%82%92%E6%B7%B1%E3%82%81%E3%82%8B%E7%AE%B1%E3%80%8D%E3%81%8C%E3%81%82%E3%81%A3%E3%81%A6%0A%0A%E4%BC%B8%E3%81%B3%E3%81%A6%E3%82%8B%E4%BC%9A%E7%A4%BE%E3%81%AF%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8B%E7%AE%B1%E3%82%921%E5%80%8B%E3%81%AB%E6%B1%BA%E3%82%81%E3%81%A6%E3%80%81%0A%E6%AE%8B%E3%82%8A%E3%81%AF%E5%8F%97%E3%81%91%E7%9A%BF%E3%81%A8%E3%81%97%E3%81%A6%E7%BD%AE%E3%81%84%E3%81%A6%E3%82%8B%E3%81%A0%E3%81%91%0A%0A%E5%85%A8%E9%83%A8%E3%81%AE%E7%AE%B1%E3%81%A7%E8%AA%8D%E7%9F%A5%E3%82%92%E5%8F%96%E3%82%8A%E3%81%AB%E3%81%84%E3%81%8F%E3%81%A8%E3%80%81%0A%E3%81%A9%E3%81%AE%E7%AE%B1%E3%81%AB%E3%82%82%E4%BA%BA%E3%81%8C%E8%B2%AF%E3%81%BE%E3%82%89%E3%81%AA%E3%81%84%0A%0A%E3%81%BE%E3%81%9A1%E5%80%8B%E3%82%92%E3%81%B6%E3%81%A1%E6%8A%9C%E3%81%8F%0A%E8%A9%B1%E3%81%AF%E3%81%9D%E3%82%8C%E3%81%8B%E3%82%89" target="_blank" rel="noopener">📤 開くだけ</a>
+        <button class="btn sub" id="done-2026-07-14-new" onclick="markPosted('2026-07-14-new', this)">✅ 記録だけ</button>
       </div>
-      <p class="hint">投稿したら「投稿済みにする」を押すと台帳に自動記録されます。スルー＝見送り（何も起きません）。</p>
+      <p class="hint">青ボタンは1タップで「投稿画面を開く＋投稿済み記録」まで済みます。開いたけど投稿をやめた時は、DiscordのPMに「さっきの投稿してない」と一言ください（取り消します）。文面を直したい時は「開くだけ」→投稿→「✅記録だけ」。</p>
+      
+      <details class="fb"><summary>🎤 フィードバックを送る（音声入力OK）</summary>
+        <textarea id="fb-2026-07-14-new" rows="3" placeholder="この投稿・考察へのダメ出し、方向修正など。送るとAIが受け止めてDiscordに返事します"></textarea>
+        <button class="btn sub" id="fbbtn-2026-07-14-new" onclick="sendFb('2026-07-14-new', this)">📨 送信</button>
+      </details>
     </section>
-
+    <section class="card pending">
+      <div class="cardhead"><span class="badge">🍜 昼の再投稿</span></div>
+      <p class="muted">昼 12:00 に自動生成されます。生成されたらこのページを引っ張って更新してください。</p>
+    </section>
     <section class="card pending">
       <div class="cardhead"><span class="badge">🌙 夜の再投稿</span></div>
       <p class="muted">夜 19:00 に自動生成されます。生成されたらこのページを引っ張って更新してください。</p>
     </section>
 
-<footer>ボタンは本文入りの投稿画面を開くだけで、投稿の確定はXアプリ側で行います。<br>このページは検索に載らない秘密URLです。ホーム画面に追加しておくと1タップで開けます。</footer>
+<footer>投稿の確定はXアプリ側で行います。<br>このページは検索に載らない秘密URLです。ホーム画面に追加しておくと1タップで開けます。</footer>
 <script>
+var TOPIC_URL = 'https://ntfy.sh/naru-xai-ingest-1f1cc874c1';
+function sendPosted(id) {
+  return fetch(TOPIC_URL, { method: 'POST', body: 'posted ' + id });
+}
+function autoMark(id) {
+  // 投稿画面は href(target=_blank) が開く。ここでは記録だけ送る
+  sendPosted(id).catch(function() {});
+  var b = document.getElementById('done-' + id);
+  if (b) { b.disabled = true; b.textContent = '✅ 記録済み'; }
+}
 function markPosted(id, btn) {
   if (!confirm('この投稿を「投稿済み」として記録します。OK？')) return;
   btn.disabled = true; btn.textContent = '記録中…';
-  fetch('https://ntfy.sh/naru-xai-ingest-1f1cc874c1', { method: 'POST', body: 'posted ' + id })
+  sendPosted(id)
     .then(function(r) { if (!r.ok) throw 0;
-      btn.textContent = '✅ 記録を送信しました'; })
-    .catch(function() { btn.disabled = false; btn.textContent = '✅ 投稿済みにする（再試行）';
+      btn.textContent = '✅ 記録済み'; })
+    .catch(function() { btn.disabled = false; btn.textContent = '✅ 記録だけ（再試行）';
       alert('送信に失敗しました。電波の良い場所でもう一度押してください'); });
 }
 function copyBody(btn, id) {
   var t = document.getElementById('body-' + id).textContent;
   navigator.clipboard.writeText(t).then(function() {
-    btn.textContent = '📋 コピーしました';
-    setTimeout(function() { btn.textContent = '📋 本文をコピー'; }, 2000);
+    btn.textContent = '📋 コピー済み';
+    setTimeout(function() { btn.textContent = '📋 コピー'; }, 2000);
   });
+}
+function sendFb(id, btn) {
+  var box = document.getElementById('fb-' + id);
+  var t = box.value.trim();
+  if (!t) { alert('フィードバックが空です'); return; }
+  btn.disabled = true; btn.textContent = '送信中…';
+  fetch(TOPIC_URL, { method: 'POST', body: 'fb ' + id + '\n' + t })
+    .then(function(r) { if (!r.ok) throw 0;
+      btn.textContent = '📨 送信しました（Discordに返事が来ます）'; box.value = ''; })
+    .catch(function() { btn.disabled = false; btn.textContent = '📨 送信（再試行）';
+      alert('送信に失敗しました。もう一度押してください'); });
 }
 </script>
 </body>
