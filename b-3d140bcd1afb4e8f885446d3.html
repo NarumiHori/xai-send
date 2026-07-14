@@ -29,6 +29,8 @@
   .m-repost2 .badge { color: #f0883e; background: rgba(219,109,40,.15); border-color: rgba(219,109,40,.4); }
   .m-repost .badge { color: #bc8cff; background: rgba(137,87,229,.15); border-color: rgba(137,87,229,.4); }
   .chars { color: #8b949e; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .revtag { color: #3fb950; font-size: 11px; font-weight: 700; background: rgba(46,160,67,.12);
+             border: 1px solid rgba(46,160,67,.4); border-radius: 999px; padding: 3px 9px; }
   .body { white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: 15px;
            line-height: 1.8; background: #0d1117; border: 1px solid #21262d; border-radius: 12px;
            padding: 14px; margin: 0 0 14px; }
@@ -79,7 +81,7 @@
 <body>
 <header>
 <h1>🐦 今日の投稿ボード</h1>
-<p class="sub-head">7/14（火） ・ 最終更新 07/14 16:47 ・ 引っ張って更新</p>
+<p class="sub-head">7/14（火） ・ 最終更新 07/14 16:52 ・ 引っ張って更新</p>
 <div class="stats"><span class="pill">再投稿ストック 103件</span><span class="pill">1日 2本ローテ</span></div>
 </header>
 <main class="cards">
@@ -123,7 +125,7 @@
       <p class="hint">青ボタンは1タップで「投稿画面を開く＋投稿済み記録」まで済みます。開いたけど投稿をやめた時は、DiscordのPMに「さっきの投稿してない」と一言ください（取り消します）。文面を直したい時は「開くだけ」→投稿→「✅記録だけ」。</p>
       
       <details class="fb"><summary>🎤 フィードバックを送る（音声入力OK）</summary>
-        <textarea id="fb-2026-07-14-new" rows="3" placeholder="この投稿・考察へのダメ出し、方向修正など。送るとAIが受け止めてDiscordに返事します"></textarea>
+        <textarea id="fb-2026-07-14-new" rows="3" placeholder="この投稿・仮説へのダメ出し、方向修正など。送るとAIが投稿を考え直して、このページの本文と仮説を書き直します"></textarea>
         <button class="btn sub" id="fbbtn-2026-07-14-new" onclick="sendFb('2026-07-14-new', this)">📨 送信</button>
       </details>
     </section>
@@ -174,7 +176,7 @@ function sendFb(id, btn) {
   btn.disabled = true; btn.textContent = '送信中…';
   fetch(TOPIC_URL, { method: 'POST', body: 'fb ' + id + '\n' + t })
     .then(function(r) { if (!r.ok) throw 0;
-      btn.textContent = '📨 送信しました（Discordに返事が来ます）'; box.value = ''; })
+      btn.textContent = '📨 送信しました（AIが考え直し中。2〜3分後に引っ張って更新）'; box.value = ''; })
     .catch(function() { btn.disabled = false; btn.textContent = '📨 送信（再試行）';
       alert('送信に失敗しました。もう一度押してください'); });
 }
