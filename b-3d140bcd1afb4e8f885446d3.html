@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#0d1117">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>今日の投稿ボード</title>
+<title>投稿ボード【テスト環境】</title>
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -67,6 +67,9 @@
   .hmode { background: #21262d; border: 1px solid #30363d; border-radius: 6px; padding: 1px 7px; font-size: 11px; color: #8b949e; }
   .hstat { color: #8b949e; font-size: 11px; }
   footer { color: #484f58; font-size: 11px; margin-top: 36px; line-height: 1.7; text-align: center; }
+  .envbanner { background: rgba(210,153,34,.12); border: 1px solid rgba(210,153,34,.5); color: #d29922;
+             border-radius: 12px; padding: 12px 14px; font-size: 13px; line-height: 1.7;
+             margin: 0 0 16px; text-align: left; }
   @media (min-width: 880px) {
     body { max-width: 1160px; padding: 36px 36px 72px; }
     header { margin-bottom: 28px; }
@@ -80,66 +83,72 @@
 </head>
 <body>
 <header>
-<h1>🐦 今日の投稿ボード</h1>
-<p class="sub-head">7/14（火） ・ 最終更新 07/14 16:52 ・ 引っ張って更新</p>
+<h1>🧪 投稿ボード【テスト環境】</h1>
+<p class="sub-head">7/15（水） ・ 最終更新 07/15 10:34 ・ 引っ張って更新</p>
 <div class="stats"><span class="pill">再投稿ストック 103件</span><span class="pill">1日 2本ローテ</span></div>
 </header>
+<div class="envbanner">🧪 <b>いまはテスト環境です。</b>毎日の定時生成・投稿依頼は止まっています。ここの投稿は実験用（投稿義務なし）。各カードの🎤フィードバック欄から修正指示をどんどん送ってください。新しいテスト投稿が欲しい時はDiscordのPMに「xai テスト投稿作って」、本番に戻す時は「xai 本番再開して」と一言。</div>
 <main class="cards">
 
     <section class="card m-new">
-      <div class="cardhead"><span class="badge">☀️ 朝の新規投稿</span><span class="chars">204字</span></div>
+      <div class="cardhead"><span class="badge">☀️ 朝の新規投稿</span><span class="chars">222字</span></div>
       
-      <pre class="body" id="body-2026-07-14-new">伸びてるサムネって共通のルールがあって
+      <pre class="body" id="body-2026-07-15-new">すごそうに見せてくる人、
+基本的に弱いです
 
-「2割わかる・8割どういうこと？」
-になってる
+難しい専門用語で語る
+肩書きをずらっと並べる
+実績をデカく言う
 
-サムネで内容を全部説明しようとしがちなんだけど、
-全部わかったら本編を見る理由がなくなっちゃう
+こういう人と実際に仕事をすると
+「あれ？」となるパターンが多い
 
-2割だけ想像がついて、
-「どういうことだろう」って
-答え合わせしたくなる
+逆に本当に強い人は、
+すごいことを当たり前みたいにサラッと言う
 
-このバランスになってるサムネが強い
+本人はアピールしてるつもりすらなくて
+わかる人だけが勝手に気づいて、人が集まっていく
 
-文字なしサムネが伸びるのも同じ理屈で、
-情報を削るほど想像の余白が生まれる
+考えてみれば当然で、
+中身で勝負できる人は
+外側を盛る必要がそもそもない
 
-サムネは説明じゃなくて出題</pre>
-      <details class="thought" open><summary>💭 なぜ伸びると思うか（AIの仮説）</summary><div class="tbody">なるみさんの「これダメ！別の仮説で」を受けて作り直した差し替え版です。
+強さは盛るものじゃなくて、漏れるもの</pre>
+      <details class="thought" open><summary>💭 なぜ伸びると思うか（AIの仮説）</summary><div class="tbody"># 2026-07-15 新規投稿のAI考察
 
-朝の案（SNS全部やる会社は伸びない）は「え、逆なの？という逆張りの気づきが拡散の燃料になる」という仮説でしたが、今回は仮説の立て方自体を変えました。**過去に実際に伸びた実績から逆算する仮説**です。
+昨日「これダメ！別の仮説で」をもらったので、今日は最初から思いつきの逆張りをやめて、過去に実際伸びた帯からだけ選びました。
 
-このアカウントで一番強い帯は「サムネの常識破壊」の考察系（文字なしサムネ約1,000いいね／サムネ白黄理論754／間違い探し385）。その根っこのニーズは生きているのに、なるみさんがいつも口にしている「2割わかる・8割どういうことだろう」のサムネ理論はまだ単独ポストになっていなかったので、そこを擦りにいきました。
+選んだのは「人間観察を言い切る」系です。「親が自営業の起業家は多い」872いいね、「億稼いでる友だちは無能が多い」1,620いいねと、この帯はなるみさんのアカウントで一番安定して跳ねています。その中で「強く見せる人は基本弱い」は、なるみさんが普段から言っている持論なのに、まだ単独のポストになっていなかったので拾いました。
 
-一番刺したい相手は「サムネの正解がわからない」YouTube実践者。サムネの役割を&quot;説明&quot;だと思い込んでいる人に、「全部わかったら見る理由がなくなる」という気づきを渡します。狙う反応は「出題って言い方が腑に落ちた」という共感と保存（ブックマーク）。締めの「サムネは説明じゃなくて出題」は引用で抜かれる想定の一行です。</div></details>
+伸びる読みはこうです。みんなが薄々思っていたことをズバッと言い切ると「だよね」の共感で広がる。しかも題材が「仕事で出会う人」なので、YouTube勢に限らずビジネスマン全員に心当たりがあり、届く層の天井が高い。
+
+狙っている反応は2つ。「いるいる、わかる」の共感いいねと、盛らずに淡々とやっている強い人たちの「これ自分のことだ」という静かな共感です。後半の「アピールせず、わかる人だけが気づく」のくだりは、発信をやっている人には「盛らない方がむしろ強く見える」という発信設計の話としても読めるように仕込みました。</div></details>
       
-      <a class="btn primary" href="https://x.com/intent/post?text=%E4%BC%B8%E3%81%B3%E3%81%A6%E3%82%8B%E3%82%B5%E3%83%A0%E3%83%8D%E3%81%A3%E3%81%A6%E5%85%B1%E9%80%9A%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%8C%E3%81%82%E3%81%A3%E3%81%A6%0A%0A%E3%80%8C2%E5%89%B2%E3%82%8F%E3%81%8B%E3%82%8B%E3%83%BB8%E5%89%B2%E3%81%A9%E3%81%86%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%EF%BC%9F%E3%80%8D%0A%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%82%8B%0A%0A%E3%82%B5%E3%83%A0%E3%83%8D%E3%81%A7%E5%86%85%E5%AE%B9%E3%82%92%E5%85%A8%E9%83%A8%E8%AA%AC%E6%98%8E%E3%81%97%E3%82%88%E3%81%86%E3%81%A8%E3%81%97%E3%81%8C%E3%81%A1%E3%81%AA%E3%82%93%E3%81%A0%E3%81%91%E3%81%A9%E3%80%81%0A%E5%85%A8%E9%83%A8%E3%82%8F%E3%81%8B%E3%81%A3%E3%81%9F%E3%82%89%E6%9C%AC%E7%B7%A8%E3%82%92%E8%A6%8B%E3%82%8B%E7%90%86%E7%94%B1%E3%81%8C%E3%81%AA%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%A1%E3%82%83%E3%81%86%0A%0A2%E5%89%B2%E3%81%A0%E3%81%91%E6%83%B3%E5%83%8F%E3%81%8C%E3%81%A4%E3%81%84%E3%81%A6%E3%80%81%0A%E3%80%8C%E3%81%A9%E3%81%86%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%A0%E3%82%8D%E3%81%86%E3%80%8D%E3%81%A3%E3%81%A6%0A%E7%AD%94%E3%81%88%E5%90%88%E3%82%8F%E3%81%9B%E3%81%97%E3%81%9F%E3%81%8F%E3%81%AA%E3%82%8B%0A%0A%E3%81%93%E3%81%AE%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%82%8B%E3%82%B5%E3%83%A0%E3%83%8D%E3%81%8C%E5%BC%B7%E3%81%84%0A%0A%E6%96%87%E5%AD%97%E3%81%AA%E3%81%97%E3%82%B5%E3%83%A0%E3%83%8D%E3%81%8C%E4%BC%B8%E3%81%B3%E3%82%8B%E3%81%AE%E3%82%82%E5%90%8C%E3%81%98%E7%90%86%E5%B1%88%E3%81%A7%E3%80%81%0A%E6%83%85%E5%A0%B1%E3%82%92%E5%89%8A%E3%82%8B%E3%81%BB%E3%81%A9%E6%83%B3%E5%83%8F%E3%81%AE%E4%BD%99%E7%99%BD%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%0A%0A%E3%82%B5%E3%83%A0%E3%83%8D%E3%81%AF%E8%AA%AC%E6%98%8E%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6%E5%87%BA%E9%A1%8C" target="_blank" rel="noopener"
-         onclick="autoMark('2026-07-14-new')">📤 投稿する（開くと同時に✅記録）</a>
+      <a class="btn primary" href="https://x.com/intent/post?text=%E3%81%99%E3%81%94%E3%81%9D%E3%81%86%E3%81%AB%E8%A6%8B%E3%81%9B%E3%81%A6%E3%81%8F%E3%82%8B%E4%BA%BA%E3%80%81%0A%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AB%E5%BC%B1%E3%81%84%E3%81%A7%E3%81%99%0A%0A%E9%9B%A3%E3%81%97%E3%81%84%E5%B0%82%E9%96%80%E7%94%A8%E8%AA%9E%E3%81%A7%E8%AA%9E%E3%82%8B%0A%E8%82%A9%E6%9B%B8%E3%81%8D%E3%82%92%E3%81%9A%E3%82%89%E3%81%A3%E3%81%A8%E4%B8%A6%E3%81%B9%E3%82%8B%0A%E5%AE%9F%E7%B8%BE%E3%82%92%E3%83%87%E3%82%AB%E3%81%8F%E8%A8%80%E3%81%86%0A%0A%E3%81%93%E3%81%86%E3%81%84%E3%81%86%E4%BA%BA%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BB%95%E4%BA%8B%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%0A%E3%80%8C%E3%81%82%E3%82%8C%EF%BC%9F%E3%80%8D%E3%81%A8%E3%81%AA%E3%82%8B%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%8C%E5%A4%9A%E3%81%84%0A%0A%E9%80%86%E3%81%AB%E6%9C%AC%E5%BD%93%E3%81%AB%E5%BC%B7%E3%81%84%E4%BA%BA%E3%81%AF%E3%80%81%0A%E3%81%99%E3%81%94%E3%81%84%E3%81%93%E3%81%A8%E3%82%92%E5%BD%93%E3%81%9F%E3%82%8A%E5%89%8D%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB%E3%82%B5%E3%83%A9%E3%83%83%E3%81%A8%E8%A8%80%E3%81%86%0A%0A%E6%9C%AC%E4%BA%BA%E3%81%AF%E3%82%A2%E3%83%94%E3%83%BC%E3%83%AB%E3%81%97%E3%81%A6%E3%82%8B%E3%81%A4%E3%82%82%E3%82%8A%E3%81%99%E3%82%89%E3%81%AA%E3%81%8F%E3%81%A6%0A%E3%82%8F%E3%81%8B%E3%82%8B%E4%BA%BA%E3%81%A0%E3%81%91%E3%81%8C%E5%8B%9D%E6%89%8B%E3%81%AB%E6%B0%97%E3%81%A5%E3%81%84%E3%81%A6%E3%80%81%E4%BA%BA%E3%81%8C%E9%9B%86%E3%81%BE%E3%81%A3%E3%81%A6%E3%81%84%E3%81%8F%0A%0A%E8%80%83%E3%81%88%E3%81%A6%E3%81%BF%E3%82%8C%E3%81%B0%E5%BD%93%E7%84%B6%E3%81%A7%E3%80%81%0A%E4%B8%AD%E8%BA%AB%E3%81%A7%E5%8B%9D%E8%B2%A0%E3%81%A7%E3%81%8D%E3%82%8B%E4%BA%BA%E3%81%AF%0A%E5%A4%96%E5%81%B4%E3%82%92%E7%9B%9B%E3%82%8B%E5%BF%85%E8%A6%81%E3%81%8C%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E3%81%AA%E3%81%84%0A%0A%E5%BC%B7%E3%81%95%E3%81%AF%E7%9B%9B%E3%82%8B%E3%82%82%E3%81%AE%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6%E3%80%81%E6%BC%8F%E3%82%8C%E3%82%8B%E3%82%82%E3%81%AE" target="_blank" rel="noopener"
+         onclick="autoMark('2026-07-15-new')">📤 投稿する（開くと同時に✅記録）</a>
       <div class="btnrow">
-        <button class="btn sub" onclick="copyBody(this, '2026-07-14-new')">📋 コピー</button>
-        <a class="btn sub" href="https://x.com/intent/post?text=%E4%BC%B8%E3%81%B3%E3%81%A6%E3%82%8B%E3%82%B5%E3%83%A0%E3%83%8D%E3%81%A3%E3%81%A6%E5%85%B1%E9%80%9A%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%8C%E3%81%82%E3%81%A3%E3%81%A6%0A%0A%E3%80%8C2%E5%89%B2%E3%82%8F%E3%81%8B%E3%82%8B%E3%83%BB8%E5%89%B2%E3%81%A9%E3%81%86%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%EF%BC%9F%E3%80%8D%0A%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%82%8B%0A%0A%E3%82%B5%E3%83%A0%E3%83%8D%E3%81%A7%E5%86%85%E5%AE%B9%E3%82%92%E5%85%A8%E9%83%A8%E8%AA%AC%E6%98%8E%E3%81%97%E3%82%88%E3%81%86%E3%81%A8%E3%81%97%E3%81%8C%E3%81%A1%E3%81%AA%E3%82%93%E3%81%A0%E3%81%91%E3%81%A9%E3%80%81%0A%E5%85%A8%E9%83%A8%E3%82%8F%E3%81%8B%E3%81%A3%E3%81%9F%E3%82%89%E6%9C%AC%E7%B7%A8%E3%82%92%E8%A6%8B%E3%82%8B%E7%90%86%E7%94%B1%E3%81%8C%E3%81%AA%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%A1%E3%82%83%E3%81%86%0A%0A2%E5%89%B2%E3%81%A0%E3%81%91%E6%83%B3%E5%83%8F%E3%81%8C%E3%81%A4%E3%81%84%E3%81%A6%E3%80%81%0A%E3%80%8C%E3%81%A9%E3%81%86%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%A0%E3%82%8D%E3%81%86%E3%80%8D%E3%81%A3%E3%81%A6%0A%E7%AD%94%E3%81%88%E5%90%88%E3%82%8F%E3%81%9B%E3%81%97%E3%81%9F%E3%81%8F%E3%81%AA%E3%82%8B%0A%0A%E3%81%93%E3%81%AE%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%82%8B%E3%82%B5%E3%83%A0%E3%83%8D%E3%81%8C%E5%BC%B7%E3%81%84%0A%0A%E6%96%87%E5%AD%97%E3%81%AA%E3%81%97%E3%82%B5%E3%83%A0%E3%83%8D%E3%81%8C%E4%BC%B8%E3%81%B3%E3%82%8B%E3%81%AE%E3%82%82%E5%90%8C%E3%81%98%E7%90%86%E5%B1%88%E3%81%A7%E3%80%81%0A%E6%83%85%E5%A0%B1%E3%82%92%E5%89%8A%E3%82%8B%E3%81%BB%E3%81%A9%E6%83%B3%E5%83%8F%E3%81%AE%E4%BD%99%E7%99%BD%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%0A%0A%E3%82%B5%E3%83%A0%E3%83%8D%E3%81%AF%E8%AA%AC%E6%98%8E%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6%E5%87%BA%E9%A1%8C" target="_blank" rel="noopener">📤 開くだけ</a>
-        <button class="btn sub" id="done-2026-07-14-new" onclick="markPosted('2026-07-14-new', this)">✅ 記録だけ</button>
+        <button class="btn sub" onclick="copyBody(this, '2026-07-15-new')">📋 コピー</button>
+        <a class="btn sub" href="https://x.com/intent/post?text=%E3%81%99%E3%81%94%E3%81%9D%E3%81%86%E3%81%AB%E8%A6%8B%E3%81%9B%E3%81%A6%E3%81%8F%E3%82%8B%E4%BA%BA%E3%80%81%0A%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AB%E5%BC%B1%E3%81%84%E3%81%A7%E3%81%99%0A%0A%E9%9B%A3%E3%81%97%E3%81%84%E5%B0%82%E9%96%80%E7%94%A8%E8%AA%9E%E3%81%A7%E8%AA%9E%E3%82%8B%0A%E8%82%A9%E6%9B%B8%E3%81%8D%E3%82%92%E3%81%9A%E3%82%89%E3%81%A3%E3%81%A8%E4%B8%A6%E3%81%B9%E3%82%8B%0A%E5%AE%9F%E7%B8%BE%E3%82%92%E3%83%87%E3%82%AB%E3%81%8F%E8%A8%80%E3%81%86%0A%0A%E3%81%93%E3%81%86%E3%81%84%E3%81%86%E4%BA%BA%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BB%95%E4%BA%8B%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%0A%E3%80%8C%E3%81%82%E3%82%8C%EF%BC%9F%E3%80%8D%E3%81%A8%E3%81%AA%E3%82%8B%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%8C%E5%A4%9A%E3%81%84%0A%0A%E9%80%86%E3%81%AB%E6%9C%AC%E5%BD%93%E3%81%AB%E5%BC%B7%E3%81%84%E4%BA%BA%E3%81%AF%E3%80%81%0A%E3%81%99%E3%81%94%E3%81%84%E3%81%93%E3%81%A8%E3%82%92%E5%BD%93%E3%81%9F%E3%82%8A%E5%89%8D%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB%E3%82%B5%E3%83%A9%E3%83%83%E3%81%A8%E8%A8%80%E3%81%86%0A%0A%E6%9C%AC%E4%BA%BA%E3%81%AF%E3%82%A2%E3%83%94%E3%83%BC%E3%83%AB%E3%81%97%E3%81%A6%E3%82%8B%E3%81%A4%E3%82%82%E3%82%8A%E3%81%99%E3%82%89%E3%81%AA%E3%81%8F%E3%81%A6%0A%E3%82%8F%E3%81%8B%E3%82%8B%E4%BA%BA%E3%81%A0%E3%81%91%E3%81%8C%E5%8B%9D%E6%89%8B%E3%81%AB%E6%B0%97%E3%81%A5%E3%81%84%E3%81%A6%E3%80%81%E4%BA%BA%E3%81%8C%E9%9B%86%E3%81%BE%E3%81%A3%E3%81%A6%E3%81%84%E3%81%8F%0A%0A%E8%80%83%E3%81%88%E3%81%A6%E3%81%BF%E3%82%8C%E3%81%B0%E5%BD%93%E7%84%B6%E3%81%A7%E3%80%81%0A%E4%B8%AD%E8%BA%AB%E3%81%A7%E5%8B%9D%E8%B2%A0%E3%81%A7%E3%81%8D%E3%82%8B%E4%BA%BA%E3%81%AF%0A%E5%A4%96%E5%81%B4%E3%82%92%E7%9B%9B%E3%82%8B%E5%BF%85%E8%A6%81%E3%81%8C%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E3%81%AA%E3%81%84%0A%0A%E5%BC%B7%E3%81%95%E3%81%AF%E7%9B%9B%E3%82%8B%E3%82%82%E3%81%AE%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6%E3%80%81%E6%BC%8F%E3%82%8C%E3%82%8B%E3%82%82%E3%81%AE" target="_blank" rel="noopener">📤 開くだけ</a>
+        <button class="btn sub" id="done-2026-07-15-new" onclick="markPosted('2026-07-15-new', this)">✅ 記録だけ</button>
       </div>
       <p class="hint">青ボタンは1タップで「投稿画面を開く＋投稿済み記録」まで済みます。開いたけど投稿をやめた時は、DiscordのPMに「さっきの投稿してない」と一言ください（取り消します）。文面を直したい時は「開くだけ」→投稿→「✅記録だけ」。</p>
       
       <details class="fb"><summary>🎤 フィードバックを送る（音声入力OK）</summary>
-        <textarea id="fb-2026-07-14-new" rows="3" placeholder="この投稿・仮説へのダメ出し、方向修正など。送るとAIが投稿を考え直して、このページの本文と仮説を書き直します"></textarea>
-        <button class="btn sub" id="fbbtn-2026-07-14-new" onclick="sendFb('2026-07-14-new', this)">📨 送信</button>
+        <textarea id="fb-2026-07-15-new" rows="3" placeholder="この投稿・仮説へのダメ出し、方向修正など。送るとAIが投稿を考え直して、このページの本文と仮説を書き直します"></textarea>
+        <button class="btn sub" id="fbbtn-2026-07-15-new" onclick="sendFb('2026-07-15-new', this)">📨 送信</button>
       </details>
     </section>
     <section class="card pending m-repost2">
       <div class="cardhead"><span class="badge">🍜 昼の再投稿</span></div>
-      <p class="muted">昼 12:00 に自動生成されます。生成されたらこのページを引っ張って更新してください。</p>
+      <p class="muted">テスト環境中は自動生成が止まっています。DiscordのPMに「xai テスト投稿作って」と送ると生成されます。</p>
     </section>
     <section class="card pending m-repost">
       <div class="cardhead"><span class="badge">🌙 夜の再投稿</span></div>
-      <p class="muted">夜 19:00 に自動生成されます。生成されたらこのページを引っ張って更新してください。</p>
+      <p class="muted">テスト環境中は自動生成が止まっています。DiscordのPMに「xai テスト投稿作って」と送ると生成されます。</p>
     </section>
 </main>
 <section class="histwrap">
-
+<h2>これまでの通知</h2><ul class="hist"><li><span class="hdate">07-14</span> <span class="hmode">再投稿(夜)</span> 文字なしサムネで <span class="hstat">— 見送り/未確定</span></li><li><span class="hdate">07-14</span> <span class="hmode">新規</span> SNS全部やる会社は伸びない <span class="hstat">— 見送り/未確定</span></li></ul>
 </section>
 <footer>投稿の確定はXアプリ側で行います。<br>このページは検索に載らない秘密URLです。ホーム画面に追加しておくと1タップで開けます。</footer>
 <script>
