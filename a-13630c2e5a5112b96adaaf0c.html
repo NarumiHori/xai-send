@@ -94,6 +94,9 @@ section.pane.on{display:block}
 .boxes{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
 .theme-box{background:var(--bg);border:1px dashed var(--line);border-radius:11px;padding:9px;min-height:96px}
 .theme-box.hot{border-color:var(--accent);border-style:solid;background:color-mix(in srgb,var(--accent) 10%,var(--bg))}
+/* 伸びてない箱＝テーマ箱の一番下に横いっぱいで置く（チェックした瞬間にここへ落ちる） */
+.theme-box.flatbox{grid-column:1/-1;order:99;opacity:.72;min-height:auto}
+.theme-box.flatbox .tname{font-weight:600;font-size:13px}
 .theme-box .tname{font-weight:600;font-size:14px;border:none;background:transparent;color:var(--fg);
   width:100%;font-family:inherit;padding:2px 0}
 .theme-box .thead{display:flex;align-items:center;gap:6px}
@@ -142,7 +145,7 @@ td.ws .v{white-space:pre-wrap;word-break:break-word}
 </style>
 </head><body><div class="wrap">
 <h1>🧠 分析ボード</h1>
-<div class="sub">更新 2026-07-29 16:57（JST）</div>
+<div class="sub">更新 2026-07-29 16:59（JST）</div>
 
 <nav class="tabs">
   <button data-tab="analytics" class="on">📊 投稿</button>
@@ -7963,7 +7966,8 @@ https://t.co/w3pyEaUqOo https://t.co/GMaHDAdb8d</div><div class="meta"><span cla
 
 <section class="pane" id="tab-board">
 <div class="hint">左のカードの <b>⠿</b> を掴んで右のテーマ箱へドラッグ（指でもOK）。カードをタップすると中身が開いて、
-入力窓に喋った／書いた内容をAIが「切り口・ポスト個別・テーマ共通・全体」に振り分けます。</div>
+入力窓に喋った／書いた内容をAIが「切り口・ポスト個別・テーマ共通・全体」に振り分けます。
+伸びてないカードは「伸びてない」にチェック（または一番下の箱へドラッグ）すると、<b>一番下の「😴 伸びてない」箱</b>にまとまります。</div>
 <div class="wsgrid">
   <div class="panel">
     <h3>過去投稿（<span id="poolcount">0</span>本）</h3>
@@ -8024,7 +8028,7 @@ https://t.co/w3pyEaUqOo https://t.co/GMaHDAdb8d</div><div class="meta"><span cla
   <div class="field"><label>狙い</label><select id="mAim">
     <option value="">未設定</option><option value="マス向け">マス向け</option>
     <option value="中上級者向け">中上級者向け</option></select></div>
-  <div class="field row"><label style="margin:0"><input type="checkbox" id="mFlat"> 伸びてない（一覧から落とす）</label></div>
+  <div class="field row"><label style="margin:0"><input type="checkbox" id="mFlat"> 伸びてない（一番下の箱へ落とす）</label></div>
   <div class="field"><label>これまでの生ログ</label>
     <div class="src" id="mLog" style="white-space:pre-wrap"></div></div>
 </div></div>
@@ -8033,7 +8037,7 @@ https://t.co/w3pyEaUqOo https://t.co/GMaHDAdb8d</div><div class="meta"><span cla
 
 <script>
 window.WS = {"themes": [], "posts": {"1522123414965678080": {"theme": "", "kiri": "", "ins": "", "flat": true, "aim": "", "log": "", "pending": []}, "1522123552861827072": {"theme": "", "kiri": "", "ins": "", "flat": true, "aim": "", "log": "", "pending": []}, "1530339000703021057": {"theme": "", "kiri": "", "ins": "", "flat": true, "aim": "", "log": "", "pending": []}, "1531890339870482432": {"theme": "", "kiri": "", "ins": "", "flat": true, "aim": "", "log": "", "pending": []}, "1531431164145111040": {"theme": "", "kiri": "", "ins": "", "flat": true, "aim": "", "log": "", "pending": []}, "1535272593925623808": {"theme": "", "kiri": "", "ins": "", "flat": true, "aim": "", "log": "", "pending": []}, "1535272681808900096": {"theme": "", "kiri": "", "ins": "", "flat": true, "aim": "", "log": "", "pending": []}, "1543919981557006336": {"theme": "", "kiri": "", "ins": "", "flat": true, "aim": "", "log": "", "pending": []}, "1548151105506357253": {"theme": "", "kiri": "", "ins": "", "flat": true, "aim": "", "log": "", "pending": []}}, "globals": []};
-window.WS_TS = 1785311829037;
+window.WS_TS = 1785311989800;
 window.NTFY = "https://ntfy.sh/naru-xai-ingest-1f1cc874c1";
 </script>
 <script>
@@ -8186,7 +8190,18 @@ function renderTable(){
 
 /* ---------------- タブ2：作業場 ---------------- */
 let boardShown=0, picked=null;
+const FLATID='__flat__';   // テーマ箱の一番下に置く「伸びてない」箱の擬似ID
 function cardLabel(p){ return p.text.replace(/\s+/g,' ').slice(0,14); }
+// カードを箱に入れる（伸びてない箱だけは flat フラグの操作になる）
+function putInBox(pid, boxId){
+  if(boxId===FLATID){
+    send({op:'field',post:pid,key:'flat',value:true,no:BYID[pid].no});
+    toast('#'+BYID[pid].no+' を「伸びてない」に入れました');
+  }else{
+    send({op:'assign',post:pid,theme:boxId,no:BYID[pid].no});
+    toast('#'+BYID[pid].no+' を「'+T(boxId).name+'」に入れました');
+  }
+}
 
 function renderBoard(reset){
   const list=document.getElementById('cardlist');
@@ -8194,6 +8209,7 @@ function renderBoard(reset){
   const onlyFree=document.getElementById('onlyfree').checked;
   const pool=POSTS.filter(p=>{
     const s=ST.posts[p.id];
+    if(s && s.flat) return false;              // 伸びてない＝下の「伸びてない」箱へ移す
     if(onlyFree && s && s.theme) return false;
     if(kw && p.text.toLowerCase().indexOf(kw)<0 && String(p.no)!==kw) return false;
     return true;
@@ -8220,10 +8236,10 @@ function renderBoxes(){
   const wrap=document.getElementById('boxes'); wrap.innerHTML='';
   if(!ST.themes.length){
     wrap.innerHTML='<div class="hint">まだテーマがありません。右上の「＋ テーマを作る」で箱を作って、左のカードを放り込んでください。</div>';
-    return;
   }
   ST.themes.forEach(t=>{
-    const members=POSTS.filter(p=>ST.posts[p.id] && ST.posts[p.id].theme===t.id);
+    // 「伸びてない」にチェックした分はテーマ箱から抜けて、一番下の伸びてない箱へ移る
+    const members=POSTS.filter(p=>ST.posts[p.id] && ST.posts[p.id].theme===t.id && !ST.posts[p.id].flat);
     const box=document.createElement('div');
     box.className='theme-box'; box.dataset.id=t.id;
     box.innerHTML='<div class="thead"><input class="tname" value="'+esc(t.name)+'">'+
@@ -8234,7 +8250,20 @@ function renderBoxes(){
         '<span class="x" data-off="'+p.id+'">✕</span></span>').join('');
     wrap.appendChild(box);
   });
-  wrap.querySelectorAll('.tname').forEach(inp=>{
+  // 一番下の「伸びてない」箱（テーマ箱と同じように投げ込める。✕で戻る）
+  const flats=POSTS.filter(p=>ST.posts[p.id] && ST.posts[p.id].flat);
+  const fbox=document.createElement('div');
+  fbox.className='theme-box flatbox'; fbox.dataset.id=FLATID;
+  fbox.innerHTML='<div class="thead"><div class="tname">😴 伸びてない</div></div>'+
+    '<div class="drop">'+flats.length+'本 ／ ✕で元に戻る'+(picked?' ・タップで入れる':'')+'</div>'+
+    flats.map(p=>'<span class="chip" data-id="'+p.id+'">#'+p.no+' '+esc(cardLabel(p))+
+      '<span class="x" data-unflat="'+p.id+'">✕</span></span>').join('');
+  wrap.appendChild(fbox);
+  wrap.querySelectorAll('.x[data-unflat]').forEach(x=>{
+    x.addEventListener('click',e=>{ e.stopPropagation();
+      send({op:'field',post:x.dataset.unflat,key:'flat',value:false,no:BYID[x.dataset.unflat].no}); });
+  });
+  wrap.querySelectorAll('input.tname').forEach(inp=>{
     inp.addEventListener('change',()=>send({op:'theme_rename',id:inp.closest('.theme-box').dataset.id,name:inp.value.trim()}));
   });
   wrap.querySelectorAll('.tdel').forEach(b=>{
@@ -8252,8 +8281,7 @@ function renderBoxes(){
       if(e.target.closest('.chip')||e.target.closest('input')||e.target.closest('button')) return;
       if(!picked) return;
       const id=picked; picked=null;
-      send({op:'assign',post:id,theme:b.dataset.id,no:BYID[id].no});
-      toast('#'+BYID[id].no+' を「'+T(b.dataset.id).name+'」に入れました');
+      putInBox(id, b.dataset.id);
     });
   });
 }
@@ -8302,8 +8330,7 @@ document.addEventListener('pointerup',e=>{
   if(drag.ghost) drag.ghost.remove();
   document.querySelectorAll('.theme-box').forEach(b=>b.classList.remove('hot'));
   if(hit){ const id=drag.id; picked=null;
-    send({op:'assign',post:id,theme:hit.dataset.id,no:BYID[id].no});
-    toast('#'+BYID[id].no+' を「'+T(hit.dataset.id).name+'」に入れました');
+    putInBox(id, hit.dataset.id);
   }
   drag=null;
 });
@@ -8346,8 +8373,14 @@ document.getElementById('mIns').addEventListener('change',e=>
   send({op:'field',post:openId,key:'ins',value:e.target.value,no:BYID[openId].no}));
 document.getElementById('mAim').addEventListener('change',e=>
   send({op:'field',post:openId,key:'aim',value:e.target.value,no:BYID[openId].no}));
-document.getElementById('mFlat').addEventListener('change',e=>
-  send({op:'field',post:openId,key:'flat',value:e.target.checked,no:BYID[openId].no}));
+document.getElementById('mFlat').addEventListener('change',e=>{
+  const id=openId, on=e.target.checked;
+  send({op:'field',post:id,key:'flat',value:on,no:BYID[id].no});
+  if(on){ // チェックした瞬間に一番下の「伸びてない」箱へ落として閉じる
+    closeCard();
+    toast('#'+BYID[id].no+' を「伸びてない」に入れました');
+  }
+});
 document.getElementById('mSend').addEventListener('click',()=>{
   const t=document.getElementById('mNote').value.trim();
   if(!t){ toast('入力窓が空です'); return; }
